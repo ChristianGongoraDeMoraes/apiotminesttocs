@@ -10,7 +10,7 @@ namespace apiotminesttocs.src.infra.interfaces.irecados.irepository
     {
         Task<Recado?> findOne(int id);
         Task<List<Recado>> findAll();
-        Task<Recado> update(int id, Recado request);
+        Task<Recado?> update(int id, Recado request);
         Task remove(int id);
 
         Task<Recado?> save(Recado request);
