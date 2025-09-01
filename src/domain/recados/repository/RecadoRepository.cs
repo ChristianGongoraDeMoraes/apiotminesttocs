@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using apiotminesttocs.src.domain.recados.dto;
+
 using apiotminesttocs.src.domain.recados.models;
 using apiotminesttocs.src.infra.data;
 using apiotminesttocs.src.infra.interfaces.irecados.irepository;
@@ -38,6 +40,7 @@ namespace apiotminesttocs.src.domain.recados.repository
 
         public async Task<Recado?> save(Recado request)
         {
+
             await _context.Recados.AddAsync(request);
             await _context.SaveChangesAsync();
             

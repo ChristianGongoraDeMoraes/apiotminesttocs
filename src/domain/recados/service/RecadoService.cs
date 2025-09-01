@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using apiotminesttocs.src.domain.recados.mapper;
+using apiotminesttocs.src.domain.recados.dto;
 using apiotminesttocs.src.domain.recados.models;
 using apiotminesttocs.src.domain.recados.repository;
 using apiotminesttocs.src.infra.interfaces.irecados.irepository;
@@ -16,12 +18,14 @@ namespace apiotminesttocs.src.domain.recados.service
             _recadoRepository = recadoRepository;
         }
 
-        public Task<Recado?> save(Recado recado)
+        public Task<Recado?> save(SaveRecadoRequestDto request)
         {
-            return _recadoRepository.save(recado);
+            var reqRecado = request.SaveToEntity();
+
+            return _recadoRepository.save(reqRecado);
         }
 
-         public async Task<List<Recado>> findAll()
+        public async Task<List<Recado>> findAll()
         {
             return await _recadoRepository.findAll();
         }
@@ -41,9 +45,11 @@ namespace apiotminesttocs.src.domain.recados.service
             return true;
         }
 
-        public async Task<Recado?> update(int id, Recado request)
+        public async Task<Recado?> update(int id, UpdateRecadoRequestDto request)
         {
-            var result = await _recadoRepository.update(id, request);
+            var reqRecado = request.UpdateToEntity();
+
+            var result = await _recadoRepository.update(id, reqRecado);
             if (result == null) return null;
             return result;
         }

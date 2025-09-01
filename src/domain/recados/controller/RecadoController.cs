@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using apiotminesttocs.src.domain.recados.dto;
 using apiotminesttocs.src.domain.recados.models;
 using apiotminesttocs.src.domain.recados.service;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,7 @@ namespace apiotminesttocs.src.domain.recados.controller
 
          // POST: api/recados
         [HttpPost]
-        public async Task<ActionResult<Recado>> Create([FromBody] Recado recado)
+        public async Task<ActionResult<Recado>> Create([FromBody] SaveRecadoRequestDto recado)
         {
             var saved = await _recadoService.save(recado);
             return CreatedAtAction(nameof(GetById), new { id = saved?.Id }, saved);
@@ -47,8 +48,9 @@ namespace apiotminesttocs.src.domain.recados.controller
 
         // PUT: api/recados/{id}
         [HttpPut("{id}")]
-        public async Task<ActionResult<Recado>> Update(int id, [FromBody] Recado request)
+        public async Task<ActionResult<Recado>> Update(int id, [FromBody] UpdateRecadoRequestDto request)
         {
+            
             var updated = await _recadoService.update(id, request);
             if (updated == null)
                 return NotFound();
