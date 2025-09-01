@@ -34,7 +34,6 @@ namespace apiotminesttocs.src.domain.recados.repository
             _context.Recados.Remove(recado);
             await _context.SaveChangesAsync();
             return true;
-
         }
 
         public async Task<Recado?> save(Recado request)
@@ -64,11 +63,6 @@ namespace apiotminesttocs.src.domain.recados.repository
             await _context.SaveChangesAsync();
 
             return recado;
-        }
-
-        Task IRecadoRepository.remove(int id)
-        {
-            return remove(id);
         }
     }
 }

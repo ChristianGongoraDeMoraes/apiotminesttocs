@@ -1,11 +1,13 @@
+using apiotminesttocs.src.domain.recados.repository;
+using apiotminesttocs.src.domain.recados.service;
 using apiotminesttocs.src.infra.data;
+using apiotminesttocs.src.infra.interfaces.irecados.irepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -20,6 +22,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddScoped<IRecadoRepository, RecadoRepository>();
+builder.Services.AddScoped<RecadoService>();
 
 var app = builder.Build();
 
