@@ -14,8 +14,8 @@ namespace apiotminesttocs.src.domain.recados.mapper
             return new Recado
             {
                 Texto = dto.Texto,
-                Sender = dto.Sender,
-                Receiver = dto.Receiver,
+                SenderId = dto.SenderId,
+                ReceiverId = dto.ReceiverId,
             };
         }
          public static Recado UpdateToEntity(this UpdateRecadoRequestDto dto)
@@ -23,8 +23,6 @@ namespace apiotminesttocs.src.domain.recados.mapper
             return new Recado
             {
                 Texto = dto.Texto,
-                Sender = dto.Sender,
-                Receiver = dto.Receiver,
                 Lido = dto.Lido,
             };
         }
@@ -33,18 +31,8 @@ namespace apiotminesttocs.src.domain.recados.mapper
             return new SaveRecadoRequestDto
             {
                 Texto = entity.Texto,
-                Sender = entity.Sender,
-                Receiver = entity.Receiver
-            };
-        }
-         public static UpdateRecadoRequestDto ToUpdateRecadoRequestDto(this Recado entity)
-        {
-            return new UpdateRecadoRequestDto
-            {
-                Texto = entity.Texto,
-                Sender = entity.Sender,
-                Receiver = entity.Receiver,
-                Lido = entity.Lido
+                SenderId = entity.SenderId,
+                ReceiverId = entity.ReceiverId,
             };
         }
     }

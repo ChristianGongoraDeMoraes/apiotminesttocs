@@ -13,17 +13,31 @@ namespace apiotminesttocs.src.infra.data
     {
         public ApplicationDbContext(DbContextOptions dbContextOptions)
         : base(dbContextOptions)
-        {
-
-        }
+        {}
 
         public DbSet<Recado> Recados { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
+            builder.Entity<Pessoa>()
+                .HasIndex(p => p.Email)
+                .IsUnique();
 
+            builder.Entity<Recado>()
+                .HasOne<Pessoa>(r => r.Sender)
+                .WithMany() 
+                .HasForeignKey(r => r.SenderId)
+                .OnDelete(DeleteBehavior.NoAction); 
+
+            builder.Entity<Recado>()
+                .HasOne<Pessoa>(r => r.Receiver)
+                .WithMany() 
+                .HasForeignKey(r => r.ReceiverId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
+            base.OnModelCreating(builder);
         }
     }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace apiotminesttocs.src.domain.pessoa.dto
 {
-    public class UpdatePessoaRequestDto
+    public record UpdatePessoaRequestDto
     {
         [Required]
-        public string Nome { get; set; } = "";
+        public string Nome;
         [Required]
-        public string Email { get; set; } = "";
+        public string Email;
     }
 }

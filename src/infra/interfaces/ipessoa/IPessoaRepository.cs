@@ -13,5 +13,6 @@ namespace apiotminesttocs.src.infra.interfaces.ipessoa
         Task<Pessoa?> update(int id, Pessoa request);
         Task<bool> remove(int id);
         Task<Pessoa?> save(Pessoa request);
+        Task<Pessoa?> login(Pessoa request);
     }
 }

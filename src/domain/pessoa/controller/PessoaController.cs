@@ -13,7 +13,7 @@ namespace apiotminesttocs.src.domain.pessoa.controller
     [Route("api/[controller]")]
     public class PessoaController : ControllerBase
     {
-         private readonly PessoaService _pessoaService;
+        private readonly PessoaService _pessoaService;
 
         public PessoaController(PessoaService pessoaService)
         {
@@ -65,6 +65,15 @@ namespace apiotminesttocs.src.domain.pessoa.controller
             var pessoa = await _pessoaService.update(id, request);
             if (pessoa == null) return NotFound("Pessoa não encontrada para atualização.");
 
+            return Ok(pessoa);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Pessoa>> Login([FromBody] LoginRequestDto request)
+        {
+            var pessoa = await _pessoaService.Login(request);
+            if (pessoa == null) return NotFound();
+            
             return Ok(pessoa);
         }
     }

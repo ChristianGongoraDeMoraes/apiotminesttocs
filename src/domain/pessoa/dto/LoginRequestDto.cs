@@ -4,14 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace apiotminesttocs.src.domain.recados.dto
+namespace apiotminesttocs.src.domain.pessoa.dto
 {
-    public record UpdateRecadoRequestDto
+    public class LoginRequestDto
     {
         [Required]
-        public string Texto;
+        public string Email;
         [Required]
-        public bool Lido;
-    
+        public string PasswordHash;
     }
 }

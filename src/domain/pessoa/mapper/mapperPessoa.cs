@@ -20,7 +20,7 @@ namespace apiotminesttocs.src.domain.pessoa.mapper
                 Email = dto.Email,
                 PasswordHash = ConfigHash.GetStringSha256Hash(dto.PasswordHash),
             };
-        }   
+        }
 
         public static Pessoa UpdateToEntity(this UpdatePessoaRequestDto dto)
         {
@@ -29,6 +29,15 @@ namespace apiotminesttocs.src.domain.pessoa.mapper
                 Nome = dto.Nome,
                 Email = dto.Email,
             };
-        }   
+        }
+
+        public static Pessoa LoginToEntity(this LoginRequestDto dto)
+        {
+            return new Pessoa
+            {
+                Email = dto.Email,
+                PasswordHash = ConfigHash.GetStringSha256Hash(dto.PasswordHash),
+            };
+        }
     }
 }

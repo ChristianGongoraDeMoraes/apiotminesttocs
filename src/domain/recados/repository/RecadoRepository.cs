@@ -40,14 +40,19 @@ namespace apiotminesttocs.src.domain.recados.repository
 
         public async Task<Recado?> save(Recado request)
         {
+            var sender = _context.Pessoas.FirstOrDefault(x => x.Id == request.SenderId);
+            var receiver = _context.Pessoas.FirstOrDefault(x => x.Id == request.ReceiverId);
+            if (sender == null || receiver == null) return null;
+            request.Sender = sender;
+            request.Receiver = receiver;
 
             await _context.Recados.AddAsync(request);
             await _context.SaveChangesAsync();
             
             return await _context.Recados.FirstOrDefaultAsync(x => 
                 x.Texto == request.Texto &&
-                x.Sender == request.Sender &&
-                x.Receiver == request.Receiver &&
+                x.SenderId == request.SenderId &&
+                x.ReceiverId == request.ReceiverId &&
                 x.Data == request.Data
             );
         }
@@ -58,8 +63,6 @@ namespace apiotminesttocs.src.domain.recados.repository
             if (recado == null) return null;
 
             recado.Texto = request.Texto;
-            recado.Sender = request.Sender;
-            recado.Receiver = request.Receiver;
             recado.Lido = request.Lido;
 
             _context.Recados.Update(recado);

@@ -11,8 +11,8 @@ namespace apiotminesttocs.src.domain.recados.dto
         [Required]
         public string Texto;
         [Required]
-        public string Sender;
+        public int SenderId;
         [Required]
-        public string Receiver;
+        public int ReceiverId;
     }
 }

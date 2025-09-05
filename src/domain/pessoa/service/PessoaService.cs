@@ -48,10 +48,20 @@ namespace apiotminesttocs.src.domain.pessoa.service
 
         public async Task<Pessoa?> update(int id, UpdatePessoaRequestDto request)
         {
-            var reqRecado = request.UpdateToEntity();
+            var reqPessoa = request.UpdateToEntity();
 
-            var result = await _pessoaRepository.update(id, reqRecado);
+            var result = await _pessoaRepository.update(id, reqPessoa);
             if (result == null) return null;
+            return result;
+        }
+
+        public async Task<Pessoa?> Login(LoginRequestDto request)
+        {
+            var reqPessoa = request.LoginToEntity();
+
+            var result = await _pessoaRepository.login(reqPessoa);
+            if(result == null) return null;
+            
             return result;
         }
     }

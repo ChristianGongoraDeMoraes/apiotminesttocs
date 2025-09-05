@@ -40,12 +40,15 @@ namespace apiotminesttocs.src.domain.pessoa.repository
 
         public async Task<Pessoa?> save(Pessoa request)
         {
+            var emailPessoaExiste = await _context.Pessoas.FirstOrDefaultAsync(p => p.Email == request.Email);
+            if (emailPessoaExiste != null) return null;
+
             await _context.Pessoas.AddAsync(request);
             await _context.SaveChangesAsync();
-            
-            return await _context.Pessoas.FirstOrDefaultAsync(x => 
+
+            return await _context.Pessoas.FirstOrDefaultAsync(x =>
                 x.Nome == request.Nome &&
-                x.PasswordHash  == request.PasswordHash &&
+                x.PasswordHash == request.PasswordHash &&
                 x.Email == request.Email &&
                 x.CreatedAt == request.CreatedAt
             );
@@ -62,6 +65,14 @@ namespace apiotminesttocs.src.domain.pessoa.repository
 
             _context.Pessoas.Update(pessoa);
             await _context.SaveChangesAsync();
+
+            return pessoa;
+        }
+
+        public async Task<Pessoa?> login(Pessoa request)
+        {
+            var pessoa = await _context.Pessoas.FirstOrDefaultAsync(x => x.Equals(request.Email) && x.Equals(request.PasswordHash));
+            if (pessoa == null) return null;
 
             return pessoa;
         }
