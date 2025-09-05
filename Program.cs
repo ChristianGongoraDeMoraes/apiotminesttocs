@@ -1,6 +1,8 @@
+using apiotminesttocs.src.domain.pessoa.repository;
 using apiotminesttocs.src.domain.recados.repository;
 using apiotminesttocs.src.domain.recados.service;
 using apiotminesttocs.src.infra.data;
+using apiotminesttocs.src.infra.interfaces.ipessoa;
 using apiotminesttocs.src.infra.interfaces.irecados.irepository;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +25,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddScoped<IRecadoRepository, RecadoRepository>();
+builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
 builder.Services.AddScoped<RecadoService>();
 
 var app = builder.Build();

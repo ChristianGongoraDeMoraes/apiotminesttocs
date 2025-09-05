@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("apiotminesttocs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abde02f53af9dd8aab7675dca5f6d51262a90c9e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+700a76bf57e2817cb1a8b1ad636fcc99c62b387f")]
 [assembly: System.Reflection.AssemblyProductAttribute("apiotminesttocs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("apiotminesttocs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
