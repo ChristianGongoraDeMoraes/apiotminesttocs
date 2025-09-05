@@ -62,6 +62,7 @@ namespace apiotminesttocs.src.domain.pessoa.service
             var result = await _pessoaRepository.login(reqPessoa);
             if(result == null) return null;
             
+            result.PasswordHash = "Password...";
             return result;
         }
     }
