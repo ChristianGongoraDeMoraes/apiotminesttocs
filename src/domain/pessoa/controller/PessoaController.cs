@@ -68,7 +68,7 @@ namespace apiotminesttocs.src.domain.pessoa.controller
             return Ok(pessoa);
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<ActionResult<Pessoa>> Login([FromBody] LoginRequestDto request)
         {
             var pessoa = await _pessoaService.Login(request);

@@ -71,7 +71,10 @@ namespace apiotminesttocs.src.domain.pessoa.repository
 
         public async Task<Pessoa?> login(Pessoa request)
         {
-            var pessoa = await _context.Pessoas.FirstOrDefaultAsync(x => x.Equals(request.Email) && x.Equals(request.PasswordHash));
+            var pessoa = await _context.Pessoas.FirstOrDefaultAsync(x =>
+                x.Email == request.Email &&
+                x.PasswordHash == request.PasswordHash
+            );
             if (pessoa == null) return null;
 
             return pessoa;

@@ -1,4 +1,5 @@
 using apiotminesttocs.src.domain.pessoa.repository;
+using apiotminesttocs.src.domain.pessoa.service;
 using apiotminesttocs.src.domain.recados.repository;
 using apiotminesttocs.src.domain.recados.service;
 using apiotminesttocs.src.infra.data;
@@ -27,6 +28,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IRecadoRepository, RecadoRepository>();
 builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
 builder.Services.AddScoped<RecadoService>();
+builder.Services.AddScoped<PessoaService>();
 
 var app = builder.Build();
 

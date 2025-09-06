@@ -20,12 +20,18 @@ namespace apiotminesttocs.src.domain.recados.repository
         }
         public async Task<List<Recado>> findAll()
         {
-            return await _context.Recados.ToListAsync();
+            return await _context.Recados
+                .Include(x => x.Sender)
+                .Include(x => x.Receiver)
+                .ToListAsync();
         }
 
         public async Task<Recado?> findOne(int id)
         {
-            return await _context.Recados.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Recados
+                .Include(x => x.Sender)
+                .Include(x => x.Receiver)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<bool> remove(int id)
